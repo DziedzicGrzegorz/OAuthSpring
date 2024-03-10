@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -35,8 +36,18 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
                 .oauth2Login(oath2 -> {
                     oath2.loginPage("/login").permitAll();
+                    oath2.failureHandler((request, response, exception) -> response.
+                            sendError(403, "Nieautoryzowane: Logowanie przez inne serwisy niż GitHub nie jest dozwolone."));
+
                     oath2.successHandler(oAuth2LoginSuccessHandler);
                 })
+                .logout(
+
+                        form -> form.invalidateHttpSession(true).clearAuthentication(true)
+                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                                .logoutSuccessUrl("/login?logout")
+                                .permitAll()
+                )
                 .build();
     }
 

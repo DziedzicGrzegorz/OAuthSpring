@@ -8,6 +8,7 @@ class OAuthApplicationTests {
 
     @Test
     void contextLoads() {
+        assert true;
     }
 
 }

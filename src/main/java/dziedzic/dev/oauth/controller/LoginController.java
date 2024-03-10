@@ -21,4 +21,10 @@ public class LoginController {
         secretData.put("data", "secret data");
         return ResponseEntity.ok(secretData);
     }
+    @GetMapping("/free")
+    public ResponseEntity<?> getFreePage() {
+        Map<String, String> secretData = new HashMap<>();
+        secretData.put("data", "free data");
+        return ResponseEntity.ok(secretData);
+    }
 }

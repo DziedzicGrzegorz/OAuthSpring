@@ -1,17 +1,48 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Please sign in</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        /* Dodatkowy styl dla wyśrodkowania */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ustawienie wysokości kontenera na całą wysokość ekranu */
+        }
+
+        .btn-google {
+            width: 200px; /* Ograniczenie szerokości przycisku */
+        }
+
+        .btn-google a {
+            display: block;
+            padding: 20px;
+            background-color: #4285F4;
+            color: #ffffff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .btn-google a:hover {
+            background-color: #357ae8;
+        }
+
+    </style>
 </head>
 <body>
 <div class="container">
-    <h2 class="form-signin-heading">My custom login page</h2><table class="table table-striped">
-    <tbody><tr><td><a href="/oauth2/authorization/github">GitHub</a></td></tr>
-    <tr><td><a href="/oauth2/authorization/google">Google</a></td></tr>
-    </tbody></table>
+    <div class="btn-google">
+        <a href="/oauth2/authorization/github">Google</a>
+    </div>
 </div>
-</body></html>
+</body>
+</html>
